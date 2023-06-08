@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Validator;
 
 class WebsiteController extends Controller
 {
+
     public function index(){
         $services = Service::all();
         $Blogs = Blog::all();

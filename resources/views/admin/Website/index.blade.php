@@ -39,8 +39,8 @@
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between" style="background-color: balck">
 
-        <a href="{{url('Billfold')}}" class="logo"><img src="{{asset('img/avatar/logo.png')}}" width="120px" height="120px"></a>
-        <h1 class="logo"><a href="{{url('Billfold')}}">Valu Billfold</a></h1>
+        <a href="{{route('website')}}" class="logo"><img src="{{asset('img/avatar/logo.png')}}" width="120px" height="120px"></a>
+        <h1 class="logo"><a href="{{route('website')}}}">Valu Billfold</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
 
         <nav id="navbar" class="navbar">
@@ -70,6 +70,7 @@
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
+                
                 @foreach($annoncements as $annoncement)
                 <div class="carousel-item active">
                     <img src="{{$annoncement->image}}" style="width: 100%;height: 700px" alt="...">
