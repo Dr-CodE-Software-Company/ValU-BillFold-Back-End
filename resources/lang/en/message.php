@@ -110,6 +110,7 @@ return [
     "portfolio_update" => "Portfolio Update",
     "service_update" => "Service Update",
     "about_update" => "About Update",
+    "logo" => "Logo",
 
 
 

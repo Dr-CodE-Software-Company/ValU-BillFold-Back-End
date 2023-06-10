@@ -37,6 +37,7 @@
                                 <th>{{__('message.twitter')}}</th>
                                 <th>{{__('message.apple_store')}}</th>
                                 <th>{{__('message.play_store')}}</th>
+                                <th>{{__('message.logo')}}</th>
                                 <th width='15%'>{{__('message.Actions')}}</th>
                             </tr>
                         </thead>
@@ -60,6 +61,7 @@
                                 <td>{{Str::limit($Contact->twitter,10)}}</td>
                                 <td>{{Str::limit($Contact->AppleStore,10)}}</td>
                                 <td>{{Str::limit($Contact->PlayStore,10)}}</td>
+                                <td><img src="{{($Contact->logo)}}" width="50px"></td>
                                 <td>
                                     <form method="post" action="{{url('Website/Contact/delete',$Contact->id)}}">
                                         @csrf

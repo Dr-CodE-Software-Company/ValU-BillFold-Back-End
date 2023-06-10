@@ -3,7 +3,11 @@
       <div class="sa-sidebar__header">
         <a class="sa-sidebar__logo" href="{{url('Dashboard')}}"><!-- logo -->
           <div class="sa-sidebar-logo">
-              <img src={{asset("img/avatar/logo.png")}} width="150px" height="60px" >
+              @if(!empty(\App\Models\ContactUs::select('logo')->first()->logo))
+              <img src={{\App\Models\ContactUs::select('logo')->first()->logo}} width="120px" height="50px" >
+              @else
+                  <img src={{asset('img/avatar/logo.png')}} width="120px" height="50px" >
+              @endif
             <div class="sa-sidebar-logo__caption">{{__('message.Admins')}}</div>
           </div>
           <!-- logo / end --></a
@@ -465,12 +469,14 @@
                                     </li>
                                 @endif
                                 @if(auth('admin')->user()->can('About-Create'))
+                                    @if(\App\Models\About::count() == 0)
                                     <li class="sa-nav__menu-item">
                                         <a href="{{url('Website/About/Create')}}" class="sa-nav__link">
                                             <span class="sa-nav__menu-item-padding"></span>
                                             <span class="sa-nav__title">{{__('message.aboutus_create')}}</span>
                                         </a>
                                     </li>
+                                        @endif
                                 @endif
                             </ul>
                         </li>
@@ -572,12 +578,14 @@
                                 </li>
                                 @endif
                                 @if(auth('admin')->user()->can('Contact-Create'))
+                                    @if(\App\Models\ContactUs::count() == 0)
                                 <li class="sa-nav__menu-item">
                                     <a href="{{url('Website/Contact/Create')}}" class="sa-nav__link">
                                         <span class="sa-nav__menu-item-padding"></span>
                                         <span class="sa-nav__title">{{__('message.contact_create')}}</span>
                                     </a>
                                 </li>
+                                        @endif
                                 @endif
                             </ul>
                         </li>

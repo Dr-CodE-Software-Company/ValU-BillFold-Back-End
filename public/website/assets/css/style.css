@@ -453,6 +453,7 @@ a:hover {
   transition: all 0.5s;
   z-index: 997;
   padding: 20px 0;
+    background-color: black;
 }
 
 #header .logo {
@@ -465,7 +466,7 @@ a:hover {
 
 #header .logo a {
   color: #fff;
-    margin-right: 320px;
+    margin-right: 120px;
 }
 
 #header .logo img {
@@ -551,7 +552,7 @@ a:hover {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color: #fff;
+  color: yellow;
 }
 
 .navbar .dropdown ul {

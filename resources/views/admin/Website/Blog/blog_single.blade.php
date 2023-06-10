@@ -5,13 +5,13 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>DevFolio Bootstrap Portfolio Template - Blog Single</title>
+    <title>Valu Billfold</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{asset('Website/assets/img/favicon.png')}}" rel="icon">
-    <link href="{{asset('Website/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <link href="{{asset('img/avatar/logo.png')}}" rel="icon">
+    <link href="{{('website/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
     <!-- Vendor CSS Files -->
     <link href="{{asset('Website/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -35,27 +35,34 @@
 
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
+    <div class="container d-flex align-items-center justify-content-between" style="background-color: balck">
 
-        <h1 class="logo"><a href="{{url('Billfold')}}">Valu Billfold</a></h1>
+        <a href="{{route('website')}}" class="logo">
+            @if(!empty(\App\Models\ContactUs::select('logo')->first()->logo))
+                <img src="{{\App\Models\ContactUs::select('logo')->first()->logo}}" width="120px" height="120px">
+            @else
+                <img src="{{'img/avatar/logo.png'}}" width="120px" height="120px">
+            @endif
+        </a>
+
+        <h1 class="logo"><a href="{{route('website')}}}">Valu Billfold</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="#about">About</a></li>
-                <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                <li><a class="nav-link scrollto " href="#work">Work</a></li>
-                <li><a class="nav-link scrollto " href="#blog">Blog</a></li>
-                <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                <li><a class="nav-link scrollto active" href="#">Home</a></li>
+                <li><a class="nav-link scrollto" href="#">About</a></li>
+                <li><a class="nav-link scrollto" href="#">Services</a></li>
+                <li><a class="nav-link scrollto " href="#">Work</a></li>
+                <li><a class="nav-link scrollto " href="#">Subscription</a></li>
+                <li><a class="nav-link scrollto " href="#">Blog</a></li>
+                <li><a class="nav-link scrollto" href="#">Contact</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
 
     </div>
 </header><!-- End Header -->
-
 <div class="hero hero-single route bg-image" style="background-image: url(assets/img/overlay-bg.jpg)">
     <div class="overlay-mf"></div>
     <div class="hero-content display-table">
@@ -64,7 +71,7 @@
                 <h2 class="hero-title mb-4">Blog Details</h2>
                 <ol class="breadcrumb d-flex justify-content-center">
                     <li class="breadcrumb-item">
-                        <a href="{{url('Billfold')}}">Home</a>
+                        <a href="{{route('website')}}">Home</a>
                     </li>
                     <li class="breadcrumb-item">
                         <a href="#">Library</a>

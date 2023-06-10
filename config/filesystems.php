@@ -85,6 +85,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'Contact' => [
+            'driver' => 'local',
+            'root' => public_path() . '/img/Contact/',
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
+
         'Company' => [
             'driver' => 'local',
             'root' => public_path() . '/img/Company/',

@@ -188,6 +188,18 @@
 
                       </div>
 
+                      <div class="col-md-4 mb-2 ">
+                          <div class="form-outline">
+                              <label for="img">{{__('message.Upload Your image')}}: </label>
+                              <input type="file" id="img" name="logo" value="{{$contact->logo}}" class="@error('logo') is-invalid @enderror" accept="image/*">
+                              @error('logo')
+                              <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                              @enderror
+                          </div>
+                      </div>
+
                   </div>
 
 

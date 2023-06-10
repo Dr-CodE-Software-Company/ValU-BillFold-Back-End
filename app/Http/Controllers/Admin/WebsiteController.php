@@ -88,7 +88,11 @@ class WebsiteController extends Controller
             $filename = '';
             $filename = uploadImage("aboutUs",$request['image']);
             $request['image'] = $filename;
-            $about->update($request);
+            $about->update([
+                'description' => $request->description,
+                'image' => $filename
+            ]);
+            return redirect()->route('AllAbout')->with('message','About Us edit Successfully');
 
         }else{
             $about->description = $request->description;
@@ -270,11 +274,15 @@ class WebsiteController extends Controller
 
     public function StoreContact(ContactRequest $request){
 
+        $filename = '';
+        $filename = uploadImage("Contact",$request->logo);
+
         $blog = ContactUs::create([
             "description" => $request->description,
             "email" => $request->email,
             "street" => $request->street,
             "address" => $request->address,
+            "logo" => $filename,
             "facebook" => $request->facebook,
             "instagram" => $request->instagram,
             "linkedin" => $request->linkedin,
@@ -297,21 +305,49 @@ class WebsiteController extends Controller
     public function UpdateContact(ContactRequest $request,$id){
         $contact = ContactUs::find($id);
 
-        $contact->update([
-            "description" => $request->description,
-            "email" => $request->email,
-            "street" => $request->street,
-            "address" => $request->address,
-            "facebook" => $request->facebook,
-            "instagram" => $request->instagram,
-            "linkedin" => $request->linkedin,
-            "tiktok" => $request->tiktok,
-            "twitter" => $request->twitter,
-            "phone" => $request->phone,
-            "PlayStore" => $request->PlayStore,
-            "AppleStore" => $request->AppleStore,
+        $fileInfo = pathinfo($contact['logo']);
+
+        if(isset($request['logo'])) {
+            $file_path = public_path("\\img\\Contact\\" . $fileInfo['basename']);
+            if (File::exists($file_path)) {
+                unlink($file_path);
+            }
+            $filename = '';
+            $filename = uploadImage("Contact", $request['logo']);
+
+            $contact->update([
+                "description" => $request->description,
+                "email" => $request->email,
+                "street" => $request->street,
+                "address" => $request->address,
+                "logo" => $filename,
+                "facebook" => $request->facebook,
+                "instagram" => $request->instagram,
+                "linkedin" => $request->linkedin,
+                "tiktok" => $request->tiktok,
+                "twitter" => $request->twitter,
+                "phone" => $request->phone,
+                "PlayStore" => $request->PlayStore,
+                "AppleStore" => $request->AppleStore,
             ]);
-            return redirect()->route('Contact')->with('message','Contact edit Successfully');
+            return redirect()->route('Contact')->with('message', 'Contact edit Successfully');
+        }else{
+            $contact->update([
+                "description" => $request->description,
+                "email" => $request->email,
+                "street" => $request->street,
+                "address" => $request->address,
+                "facebook" => $request->facebook,
+                "instagram" => $request->instagram,
+                "linkedin" => $request->linkedin,
+                "tiktok" => $request->tiktok,
+                "twitter" => $request->twitter,
+                "phone" => $request->phone,
+                "PlayStore" => $request->PlayStore,
+                "AppleStore" => $request->AppleStore,
+            ]);
+            return redirect()->route('Contact')->with('message', 'Contact edit Successfully');
+        }
 
     }
     public function DeleteContact($id){

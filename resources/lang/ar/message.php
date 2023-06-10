@@ -102,4 +102,5 @@ return [
     "portfolio_update" => "تعديل الملف",
     "service_update" => "تعديل الخدمات",
     "about_update" => "تعديل النبذه",
+    "logo" => "اللوجو",
 ];

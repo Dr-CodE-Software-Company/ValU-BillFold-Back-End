@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>DevFolio Bootstrap Portfolio Template - Index</title>
+    <title>Valu Billfold</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{asset('website/assets/img/favicon.png')}}" rel="icon">
+    <link href="{{asset('img/avatar/logo.png')}}" rel="icon">
     <link href="{{('website/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
     <!-- Vendor CSS Files -->
@@ -34,12 +34,18 @@
 </head>
 
 <body>
-
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between" style="background-color: balck">
 
-        <a href="{{route('website')}}" class="logo"><img src="{{asset('img/avatar/logo.png')}}" width="120px" height="120px"></a>
+        <a href="{{route('website')}}" class="logo">
+            @if(!empty(\App\Models\ContactUs::select('logo')->first()->logo))
+            <img src="{{\App\Models\ContactUs::select('logo')->first()->logo}}" width="120px" height="120px">
+            @else
+                <img src="{{'img/avatar/logo.png'}}" width="120px" height="120px">
+            @endif
+        </a>
+
         <h1 class="logo"><a href="{{route('website')}}}">Valu Billfold</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
 
@@ -70,7 +76,7 @@
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-                
+
                 @foreach($annoncements as $annoncement)
                 <div class="carousel-item active">
                     <img src="{{$annoncement->image}}" style="width: 100%;height: 700px" alt="...">
@@ -94,7 +100,7 @@
     </div>
 </div><!-- End Hero Section -->
 
-<main id="main">
+{{--<main id="main">--}}
 
     <!-- ======= About Section ======= -->
     <section id="about" class="about-mf sect-pt4 route">
@@ -113,7 +119,7 @@
                                     <div class="col-sm-6 col-md-7">
                                         <div class="about-info">
                                             <p><span class="title-s">location: </span> <span>{{$contactUS->address}}</span></p>
-{{--                                            <p><span class="title-s">Profile: </span> <span>full stack developer</span></p>--}}
+                                            <p><span class="title-s">Profile: </span> <span>full stack developer</span></p>
                                             <p><span class="title-s">Email: </span> <span>{{$contactUS->email}}</span></p>
                                             <p><span class="title-s">Phone: </span> <span>{{$contactUS->phone}}</span></p>
                                         </div>
@@ -130,16 +136,6 @@
                                     <p class="lead">
                                         {{$aboutUs->description}}
                                     </p>
-{{--                                    <p class="lead">--}}
-{{--                                        Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus suscipit tortor eget felis--}}
-{{--                                        porttitor volutpat. Vestibulum--}}
-{{--                                        ac diam sit amet quam vehicula elementum sed sit amet dui. porttitor at sem.--}}
-{{--                                    </p>--}}
-{{--                                    <p class="lead">--}}
-{{--                                        Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim.--}}
-{{--                                        Nulla porttitor accumsan--}}
-{{--                                        tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.--}}
-{{--                                    </p>--}}
                                 </div>
                             </div>
                         </div>
@@ -400,7 +396,7 @@
         </div>
     </section>
 
-    <!-- ======= End of Subscription Section ======= -->
+{{--    <!-- ======= End of Subscription Section ======= -->--}}
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(assets/img/overlay-bg.jpg)">
         <div class="overlay-mf"></div>
@@ -515,5 +511,7 @@
 <script src="{{asset('website/assets/js/main.js')}}"></script>
 
 </body>
-
+{{--<body>--}}
+{{--<h1>fuck us</h1>--}}
+{{--</body>--}}
 </html>

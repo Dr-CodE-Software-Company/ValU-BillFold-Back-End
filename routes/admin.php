@@ -9,12 +9,6 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 
-
-
-
-
-
-
     Route::group(['controller' =>AuthController::class , 'prefix'=> 'Admin'],function(){
         Route::get("login","getlogin")->name('login')->middleware('login.auth');
         Route::get('/Dashboard',"home")->middleware(["admin.auth","Lang"])->name('Dashboard');

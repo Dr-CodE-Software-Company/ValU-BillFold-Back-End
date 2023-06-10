@@ -56,7 +56,7 @@ class EmailVerificationNotification extends Notification
         ->subject($this->subject)
         ->greeting('Hello Mr :' .  ' ' . $notifiable->name)
         ->line($this->message)
-        ->line('code : ' . $otp->token );
+        ->line('Verification code is : ' . $otp->token );
     }
 
     /**
