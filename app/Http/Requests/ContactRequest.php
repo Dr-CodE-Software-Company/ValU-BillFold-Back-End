@@ -28,14 +28,7 @@ class ContactRequest extends FormRequest
             'email' => 'required|email',
             'street' => "required",
             'address' => "required",
-            "facebook" => 'required',
-            "instagram" => 'required',
-            "linkedin" => 'required',
-            "tiktok" => "required",
-            "twitter" => "required",
             "phone" => "required",
-            "AppleStore" => "required",
-            "PlayStore" => "required",
         ];
     }
 }

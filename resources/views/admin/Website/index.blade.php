@@ -24,6 +24,17 @@
     <link href="{{asset('website/assets/subsc/Style.css')}}" rel="stylesheet">
     <link href="{{asset('website/assets/subsc/mobile-style.css')}}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-
+      alpha/css/bootstrap.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
     <!-- =======================================================
     * Template Name: DevFolio
     * Updated: May 30 2023 with Bootstrap v5.3.0
@@ -40,16 +51,16 @@
 
         <a href="{{route('website')}}" class="logo">
             @if(!empty(\App\Models\ContactUs::select('logo')->first()->logo))
-            <img src="{{\App\Models\ContactUs::select('logo')->first()->logo}}" width="120px" height="120px">
+            <img src="{{\App\Models\ContactUs::select('logo')->first()->logo}}" width="140px" height="120px">
             @else
-                <img src="{{'img/avatar/logo.png'}}" width="120px" height="120px">
+                <img src="{{'img/avatar/logo.png'}}" width="140px" height="120px">
             @endif
         </a>
 
-        <h1 class="logo"><a href="{{route('website')}}}">Valu Billfold</a></h1>
+{{--        <h1 class="logo"><a href="{{route('website')}}}">Valu Billfold</a></h1>--}}
         <!-- Uncomment below if you prefer to use an image logo -->
 
-        <nav id="navbar" class="navbar">
+        <nav id="navbar" class="navbar" style="margin-right:160px">
             <ul>
                 <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                 <li><a class="nav-link scrollto" href="#about">About</a></li>
@@ -509,6 +520,26 @@
 
 <!-- Template Main JS File -->
 <script src="{{asset('website/assets/js/main.js')}}"></script>
+
+<script>
+    @if(Session::has('message'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.success("{{ session('message') }}");
+    @endif
+
+        @if(Session::has('error'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.error("{{ session('error') }}");
+    @endif
+</script>
 
 </body>
 {{--<body>--}}
