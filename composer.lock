@@ -4,8 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e1925330b007bf533dde81403bb1046",
+    "content-hash": "8c7b4378d8bfec0c351847a3a3e46369",
     "packages": [
+        {
+            "name": "ankane/onnxruntime",
+            "version": "v0.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ankane/onnxruntime-php.git",
+                "reference": "dfe1da7aa8cf8215992df5ea327a79dd48d11a56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ankane/onnxruntime-php/zipball/dfe1da7aa8cf8215992df5ea327a79dd48d11a56",
+                "reference": "dfe1da7aa8cf8215992df5ea327a79dd48d11a56",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ffi": ">= 8.0",
+                "php": ">= 8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "OnnxRuntime\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Kane",
+                    "email": "andrew@ankane.org"
+                }
+            ],
+            "description": "Run ONNX models in PHP",
+            "support": {
+                "issues": "https://github.com/ankane/onnxruntime-php/issues",
+                "source": "https://github.com/ankane/onnxruntime-php"
+            },
+            "time": "2023-05-25T02:23:52+00:00"
+        },
         {
             "name": "barryvdh/laravel-dompdf",
             "version": "v2.0.1",

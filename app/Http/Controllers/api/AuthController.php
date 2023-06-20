@@ -25,6 +25,8 @@ use App\Events\ApprovedNotify;
 use Otp;
 use Illuminate\Validation\Rule;
 use App\Notifications\EmailVerificationNotification;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 class AuthController extends Controller
 {
 
@@ -35,6 +37,20 @@ class AuthController extends Controller
         $this->otp = new Otp;
     }
     public function register(Request $request){
+
+//        $pathToScript = base_path('public/File.py');
+//
+//        $process = new Process(['C:\Users\LORD\AppData\Local\Programs\Python\Python311\python.exe', $pathToScript]);
+//        $process->run();
+//
+//        if (!$process->isSuccessful()) {
+//            throw new ProcessFailedException($process);
+//        }
+//
+//        $data = $process->getOutput();
+//        return $data;
+//        dd($data);
+
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|unique:users,email',
@@ -73,6 +89,8 @@ class AuthController extends Controller
             if($validator->fails()){
                 return Response::json(['status'=>false,'message'=> $validator->errors()],400);
             }
+
+
             $credentials = request(['email', 'password']);
             if ($token = auth()->guard('api')->setTTL(43200)->attempt($credentials)) {
                 $user = auth()->guard('api')->user();
