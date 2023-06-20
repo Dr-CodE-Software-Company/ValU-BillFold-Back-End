@@ -10,8 +10,8 @@
               @endif
             <div class="sa-sidebar-logo__caption">{{__('message.Admins')}}</div>
           </div>
-          <!-- logo / end --></a
-        >
+          <!-- logo / end -->
+        </a>
       </div>
       <div class="sa-sidebar__body" data-simplebar="">
         <ul class="sa-nav sa-nav--sidebar" data-sa-collapse="">
@@ -136,7 +136,6 @@
                                     <span class="sa-nav__title">{{__('message.Subscription_list')}}</span>
                                 </a>
                             </li>
-
                         @endif
                         @if(auth('admin')->user()->can('Subscription-Create'))
                             <li class="sa-nav__menu-item">
@@ -169,10 +168,10 @@
               <ul class="sa-nav__menu sa-nav__menu--sub" data-sa-collapse-content="">
                       @if(auth('admin')->user()->can('Role-List'))
                       <li class="sa-nav__menu-item">
-                    <a href="{{url('Admin/Role')}}" class="sa-nav__link"><span class="sa-nav__menu-item-padding"></span>
-                        <span class="sa-nav__title">{{__('message.Roles_list')}}</span>
-                    </a>
-                </li>
+                        <a href="{{url('Admin/Role')}}" class="sa-nav__link"><span class="sa-nav__menu-item-padding"></span>
+                            <span class="sa-nav__title">{{__('message.Roles_list')}}</span>
+                        </a>
+                    </li>
                   @endif
                   @if(auth('admin')->user()->can('Role-Create'))
                   <li class="sa-nav__menu-item">
