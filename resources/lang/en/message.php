@@ -111,8 +111,8 @@ return [
     "service_update" => "Service Update",
     "about_update" => "About Update",
     "logo" => "Logo",
-    "subject" => "subject"
-
+    "subject" => "subject",
+    "period"=>"period"
 
 
 ];

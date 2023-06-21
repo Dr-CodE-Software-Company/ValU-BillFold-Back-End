@@ -18,7 +18,7 @@
                 @csrf
                 @method('PUT')
                 <div class="row">
-                  <div class="col-md-12 mb-4">
+                  <div class="col-md-6 mb-4">
 
                     <div class="form-outline">
                       <input type="text" id="title" name="title" value="{{$subscription->title}}" class="form-control form-control-lg @error('title') is-invalid @enderror" />
@@ -30,6 +30,20 @@
                   @enderror
                     </div>
                   </div>
+
+                    <div class="col-md-6 mb-4">
+
+                        <div class="form-outline">
+                            <input type="number" id="period" value="{{$subscription->period}}" name="period" class="form-control form-control-lg @error('period') is-invalid @enderror" />
+                            <label class="form-label" for="fname">{{__('message.period')}}</label>
+                            @error('period')
+                            <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                            @enderror
+                        </div>
+
+                    </div>
                 </div>
 
                 <div class="row">

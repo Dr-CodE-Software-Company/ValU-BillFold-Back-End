@@ -9,7 +9,7 @@ class Subscription extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','description','price'];
+    protected $fillable = ['title','description','price','period'];
 
     public function users(){
         return $this->hasMany(User::class,'subscription_id');

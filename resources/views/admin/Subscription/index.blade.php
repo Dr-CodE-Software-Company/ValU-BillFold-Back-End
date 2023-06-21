@@ -36,6 +36,7 @@
                                 </th>
                                 <th>{{__('message.title')}}</th>
                                 <th>{{__('message.price')}}</th>
+                                <th>{{__('message.period')}}</th>
 {{--                                <th>{{__('message.image')}}</th>--}}
                                 <th>{{__('message.description')}}</th>
                                 <th width='15%'>{{__('message.Actions')}}</th>
@@ -52,6 +53,7 @@
                                 </td>
                                 <td>{{$Subscription->title}}</td>
                                 <td>{{$Subscription->price}}</td>
+                                <td>{{$Subscription->period}}</td>
 {{--                                <td><img src="{{$Subscription->image}}" width="50px"></td>--}}
                                 <td>{{$Subscription->description}}</td>
                                 <td>

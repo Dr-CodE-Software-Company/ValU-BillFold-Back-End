@@ -31,6 +31,7 @@ class SubscriptionController extends Controller
             'title' => $request->title,
             'price' => $request->price,
             "description"=> $request->description,
+            'period' => $request->period
         ]);
         return redirect(url('Subscription'))->withsuccess("the Subscription is add successfully");
     }
@@ -46,6 +47,7 @@ class SubscriptionController extends Controller
             $subscription->title = $request->title;
             $subscription->price= $request->price;
             $subscription->description= $request->description;
+            $subscription->period= $request->period;
             $subscription->save();
             return redirect(url('Subscription'))->withsuccess("the Subscription is updated successfully");
     }

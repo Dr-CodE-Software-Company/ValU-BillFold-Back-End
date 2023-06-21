@@ -8,7 +8,7 @@ use App\Models\User;
 use Carbon\Carbon;
 
 
-class UserNotify extends Command
+class UserSubscription extends Command
 {
     /**
      * The name and signature of the console command.
