@@ -80,7 +80,7 @@ return [
 
         'Blog' => [
             'driver' => 'local',
-            'root' => public_path() . '/img/Blog/',
+            'root' =>  '/var/www/html/billfold/public/img/Blog/',
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
