@@ -197,6 +197,7 @@ class WebsiteController extends Controller
         $filename = '';
         $filename = uploadImage("Blog",$request->image);
 
+        return $filename;
         $blog = Blog::create([
             'image' => $filename,
             'title' => $request->title,
