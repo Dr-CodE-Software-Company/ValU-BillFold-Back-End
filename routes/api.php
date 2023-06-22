@@ -32,6 +32,7 @@ Route::group(['controller' =>AuthController::class , 'prefix'=> 'Auth'],function
     Route::post('email-verify','EmailVerification');
     Route::post('email-verify-send','EmailVerificationSend');
     Route::post('delete_profile','DeleteProfile');
+    Route::post('testsubscription','testSubscription');
 });
 
 Route::group(['controller' =>InvoiceController::class , 'prefix'=> 'invoice','middleware' => ['api.auth','token.status'] ],function(){

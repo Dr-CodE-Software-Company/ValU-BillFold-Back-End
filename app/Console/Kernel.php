@@ -16,12 +16,14 @@ class Kernel extends ConsoleKernel
 
      protected $commands = [
         Commands\UserNotify::class,
+        Commands\UserSubscription::class,
         Commands\UserBlock::class
     ];
 
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('user:notify')->daily();
+        $schedule->command('user:notify')->everyMinute();
+        $schedule->command('user:Subscription')->everyMinute();
         $schedule->command('user:Block')->daily();
     }
     /**

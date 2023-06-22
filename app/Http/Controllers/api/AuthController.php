@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Invoice;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\EmailVerificationRequest;
@@ -37,7 +38,6 @@ class AuthController extends Controller
         $this->otp = new Otp;
     }
     public function register(Request $request){
-
 //        $pathToScript = base_path('public/File.py');
 //
 //        $process = new Process(['C:\Users\LORD\AppData\Local\Programs\Python\Python311\python.exe', $pathToScript]);
@@ -50,7 +50,6 @@ class AuthController extends Controller
 //        $data = $process->getOutput();
 //        return $data;
 //        dd($data);
-
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|unique:users,email',
@@ -307,5 +306,18 @@ class AuthController extends Controller
             return Response::json(['status'=>true,"message" => "profile is deleted successfully"],200);
         }
         return Response::json(['status'=>false,"message" => "there is an error"],404);
+    }
+
+
+    public function testSubscription(Request $request){
+        $user = User::where('id',auth('api')->user()->id)->first();
+        $subscription = Subscription::where('id',$request->subscription_id)->first();
+//        return $subscription;
+        $DateSubscription = Carbon::now()->addDays($subscription->period)->format('j-n-Y'); // 9/4  // 23-6-2023
+//        return $DateSubscription;
+        $user->subscription_id=$request->subscription_id;
+        $user->DateSubscription= $DateSubscription;
+        $user->save();
+        return 'fuck';
     }
 }
