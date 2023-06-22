@@ -8,9 +8,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests\InvoiceRequest;
 use App\Models\Invoice;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use PDF;
 use Illuminate\Support\Facades\Response;
 use Carbon\Carbon;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 class InvoiceController extends Controller
 {
@@ -21,6 +26,37 @@ class InvoiceController extends Controller
             $filename = uploadImage("invoice",$request->image);
         }else{
             return Response::json(['status'=>false,'message'=> 'your image not still in your phone'],404);
+        }
+        $fileInfo = pathinfo($filename);
+        File::copy(public_path('img/invoice/' . $fileInfo['basename']), public_path('img/python/image.jpg'));
+
+        $process = Process::fromShellCommandline('python '. public_path('img/python/main.py'));
+        $process->run();
+        $result =  $process->getOutput();
+        if(Str::contains($result, 'success operation')){
+            $result = explode(
+                ',',
+                Str::replace(
+                    '(',
+                    '',
+                    Str::replace(
+                        ')',
+                        '',
+                        Str::replace(
+                            "'",
+                            '',
+                            Str::replace('success operation', ')', $result)
+                        )
+                    ))
+
+            );
+
+            return [
+                'bankId' => trim($result[0]),
+                'price' => trim($result[1]),
+                'ocr' => trim($result[2])
+            ];
+
         }
 
         $invoice = Invoice::create([

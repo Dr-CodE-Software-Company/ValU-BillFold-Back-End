@@ -38,18 +38,6 @@ class AuthController extends Controller
         $this->otp = new Otp;
     }
     public function register(Request $request){
-//        $pathToScript = base_path('public/File.py');
-//
-//        $process = new Process(['C:\Users\LORD\AppData\Local\Programs\Python\Python311\python.exe', $pathToScript]);
-//        $process->run();
-//
-//        if (!$process->isSuccessful()) {
-//            throw new ProcessFailedException($process);
-//        }
-//
-//        $data = $process->getOutput();
-//        return $data;
-//        dd($data);
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|unique:users,email',
