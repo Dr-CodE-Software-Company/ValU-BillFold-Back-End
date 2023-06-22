@@ -193,8 +193,7 @@ class WebsiteController extends Controller
     }
 
     public function StoreBlog(BlogRequest $request){
-//        return $request->all();
-        return public_path() . '/img/Blog/';
+
         $filename = '';
         $filename = uploadImage("Blog",$request->image);
 
