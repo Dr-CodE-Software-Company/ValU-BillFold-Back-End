@@ -1,5 +1,6 @@
 import cv2
 import os
+
 # os.environ['HOME'] = r'C:\Users\Mohamed Attar'  # Replace with the actual home directory path
 os.environ['USERPROFILE'] = r'C:\Users\Mohamed Attar'  # Replace with the actual home directory path
 
@@ -190,4 +191,6 @@ def get_price(text: str):
         price = float(text[3:])
         return price
 
-print(get_info_from_img2(r'D:\Projects\multi_tenancy\storage\app\public\image.png'), 'success operation')
+current_dir = os.path.dirname(os.path.abspath(__file__))
+image_path='image.png'
+print(get_info_from_img2(f'{current_dir}/{image_path}'), 'success operation')
