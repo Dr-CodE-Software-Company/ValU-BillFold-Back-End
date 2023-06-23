@@ -26,8 +26,6 @@ use App\Events\ApprovedNotify;
 use Otp;
 use Illuminate\Validation\Rule;
 use App\Notifications\EmailVerificationNotification;
-use Symfony\Component\Process\Exception\ProcessFailedException;
-use Symfony\Component\Process\Process;
 class AuthController extends Controller
 {
 

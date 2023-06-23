@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\MobileNotification;
 use Illuminate\Console\Command;
 use App\Models\Invoice;
 use App\Models\User;
@@ -51,9 +52,15 @@ class UserSubscription extends Command
                         "body" => 'Please pay the Subscription your Renewal date is : ' . $user->DateSubscription,
                     ],
                     "data" => [
-                        "user" => $user
+                        "Subscription" => $user->Subscription
                     ]
                 ];
+
+                MobileNotification::craete([
+                    'title' => $data['notification']['title'],
+                    'body' => $data['notification']['body'],
+                    'data' => json_encode($data['data'])
+                ]);
 
                 $dataString = json_encode($data);
 
