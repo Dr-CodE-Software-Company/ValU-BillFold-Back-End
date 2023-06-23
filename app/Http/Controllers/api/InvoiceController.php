@@ -23,7 +23,7 @@ class InvoiceController extends Controller
 
         if($request->image){
             $filename = '';
-            $filename = uploadImage("invoice",$request->image);
+            $filename = uploadImage("avatar",$request->image);
         }else{
             return Response::json(['status'=>false,'message'=> 'your image not still in your phone'],404);
         }
