@@ -42,6 +42,7 @@ Route::group(['controller' =>InvoiceController::class , 'prefix'=> 'invoice','mi
     Route::Post('update/{id}','update');
     Route::post('details','details');
     Route::get('paid','paid');
+    Route::post('ocr','ocr');
 });
 
 Route::group(['controller' =>OutLookController::class , 'prefix'=> 'OutLook' , 'middleware' => ['api.auth','token.status']],function(){

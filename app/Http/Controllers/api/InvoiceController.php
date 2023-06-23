@@ -27,37 +27,6 @@ class InvoiceController extends Controller
         }else{
             return Response::json(['status'=>false,'message'=> 'your image not still in your phone'],404);
         }
-        $fileInfo = pathinfo($filename);
-        File::copy(public_path('img/avatar/' . $fileInfo['basename']), public_path('img/python/image.png'));
-
-        $process = Process::fromShellCommandline('python3 '. public_path('img/python/main.py'));
-        $process->run();
-        $result =  $process->getOutput();
-        if(Str::contains($result, 'success operation')){
-            $result = explode(
-                ',',
-                Str::replace(
-                    '(',
-                    '',
-                    Str::replace(
-                        ')',
-                        '',
-                        Str::replace(
-                            "'",
-                            '',
-                            Str::replace('success operation', ')', $result)
-                        )
-                    ))
-
-            );
-
-            return [
-                'bankId' => trim($result[0]),
-                'price' => trim($result[1]),
-                'ocr' => trim($result[2])
-            ];
-
-        }
 
         $invoice = Invoice::create([
             "invoice_num" => $request->invoice_num,
@@ -150,6 +119,46 @@ class InvoiceController extends Controller
             return Response::json(['status'=>true,'message'=>"your invoice is updated successfully" ],200);
         }else{
             return Response::json(['status'=>true,'message'=>"sorry this is error" ],200);
+        }
+    }
+
+    public function ocr(Request $request){
+        if($request->image){
+            $filename = '';
+            $filename = uploadImage("avatar",$request->image);
+        }else{
+            return Response::json(['status'=>false,'message'=> 'your image not still in your phone'],404);
+        }
+        $fileInfo = pathinfo($filename);
+        File::copy(public_path('img/avatar/' . $fileInfo['basename']), public_path('img/python/image.png'));
+
+        $process = Process::fromShellCommandline('python3 '. public_path('img/python/main.py'));
+        $process->run();
+        $result =  $process->getOutput();
+        if(Str::contains($result, 'success operation')){
+            $result = explode(
+                ',',
+                Str::replace(
+                    '(',
+                    '',
+                    Str::replace(
+                        ')',
+                        '',
+                        Str::replace(
+                            "'",
+                            '',
+                            Str::replace('success operation', ')', $result)
+                        )
+                    ))
+
+            );
+
+            return [
+                'bankId' => trim($result[0]),
+                'price' => trim($result[1]),
+                'ocr' => trim($result[2])
+            ];
+
         }
     }
 
