@@ -33,6 +33,7 @@ class InvoiceController extends Controller
         $process = Process::fromShellCommandline('python '. public_path('img/python/main.py'));
         $process->run();
         $result =  $process->getErrorOutput();
+        return $result;
         if(Str::contains($result, 'success operation')){
             $result = explode(
                 ',',
