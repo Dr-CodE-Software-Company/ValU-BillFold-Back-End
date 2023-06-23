@@ -1,9 +1,6 @@
 import cv2
 import os
 
-# os.environ['HOME'] = r'C:\Users\Mohamed Attar'  # Replace with the actual home directory path
-os.environ['USERPROFILE'] = r'C:\Users\Mohamed Attar'  # Replace with the actual home directory path
-
 import easyocr
 from ultralytics import YOLO
 import json
