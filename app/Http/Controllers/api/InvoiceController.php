@@ -28,7 +28,7 @@ class InvoiceController extends Controller
             return Response::json(['status'=>false,'message'=> 'your image not still in your phone'],404);
         }
         $fileInfo = pathinfo($filename);
-        File::copy(public_path('img/invoice/' . $fileInfo['basename']), public_path('img/python/image.png'));
+        File::copy(public_path('img/avatar/' . $fileInfo['basename']), public_path('img/python/image.png'));
 
         $process = Process::fromShellCommandline('python3 '. public_path('img/python/main.py'));
         $process->run();
