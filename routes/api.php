@@ -38,6 +38,7 @@ Route::group(['controller' =>AuthController::class , 'prefix'=> 'Auth'],function
 Route::group(['controller' =>InvoiceController::class , 'prefix'=> 'invoice','middleware' => ['api.auth','token.status'] ],function(){
     Route::post('create','create');
     Route::get('due','due');
+    Route::get('AllNotification','AllNotification');
     Route::Post('search','search');
     Route::Post('update/{id}','update');
     Route::post('details','details');

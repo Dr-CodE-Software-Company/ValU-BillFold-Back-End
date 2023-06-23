@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\MobileNotification;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Http\Requests\InvoiceRequest;
@@ -160,6 +161,14 @@ class InvoiceController extends Controller
             ];
 
         }
+    }
+
+    public function AllNotification(){
+        $AllNotification = MobileNotification::get();
+        if ($AllNotification->count() > 0 ){
+            return Response::json(['status'=>true,'message'=>$AllNotification ],200);
+        }
+        return Response::json(['status'=>false,'message'=> []],404);
     }
 
 }
