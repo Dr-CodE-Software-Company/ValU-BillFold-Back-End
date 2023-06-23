@@ -30,7 +30,7 @@ class InvoiceController extends Controller
         $fileInfo = pathinfo($filename);
         File::copy(public_path('img/invoice/' . $fileInfo['basename']), public_path('img/python/image.png'));
 
-        $process = Process::fromShellCommandline('python '. public_path('img/python/main.py'));
+        $process = Process::fromShellCommandline('python3 '. public_path('img/python/main.py'));
         $process->run();
         $result =  $process->getOutput();
         return $result;
