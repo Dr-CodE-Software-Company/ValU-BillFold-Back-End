@@ -22,9 +22,9 @@ class Kernel extends ConsoleKernel
 
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('user:notify')->everyMinute();
-        $schedule->command('user:Subscription')->everyMinute();
-        $schedule->command('user:Block')->daily();
+        $schedule->command('user:notify')->daily();
+        $schedule->command('user:Subscription')->daily();
+        $schedule->command('user:Block')->everyMinute();
     }
     /**
      * Register the commands for the application.

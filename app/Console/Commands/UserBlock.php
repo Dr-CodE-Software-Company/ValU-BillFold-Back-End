@@ -31,11 +31,22 @@ class UserBlock extends Command
      */
     public function handle()
     {
-        $sevenDaysAgo = Carbon::now()->subDays(7)->toDateString();
-        $users = User::where('created_at', $sevenDaysAgo)->where('is_active',1)->get();
-        foreach ($users as $user){
-            $user->is_active = 0;
-            $user->save();
+        $today = Carbon::now()->format('j-n-Y'); // 9/4  // 23-6-2023
+        $invoices = Invoice::where("due_date", "<", $today)->where('status_value', 0)->get(); // 25-6-2023
+        $SubscriptionUser  = User::where('DateSubscription',$today)->get();
+        foreach ($SubscriptionUser as $item){
+            $item->is_active=0;
+            $item->save();
+        }
+        if ($invoices->count() > 0 && isset($invoices)) {
+            $users = [];
+            foreach ($invoices as $invoice) {
+                $users[] = $invoice->user;
+            }
+            foreach ($users as $user) {
+                $user->is_active = 0;
+                $user->save();
+            }
         }
     }
 }
