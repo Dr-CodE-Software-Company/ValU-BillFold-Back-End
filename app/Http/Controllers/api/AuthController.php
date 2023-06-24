@@ -59,9 +59,10 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => $request->password,
             'device_token' => $request->device_token,
+            'avatar' => 'default.jpg'
         ]);
-        event(new ApprovedNotify($user));
-        $user->notify(new EmailVerificationNotification());
+//        event(new ApprovedNotify($user));
+//        $user->notify(new EmailVerificationNotification());
         return Response::json(['status'=>true,'message'=> 'Registration has been successful and review is underway through Value Bill Fold'],200);
     }
 
@@ -245,6 +246,10 @@ class AuthController extends Controller
     }
     public function showProfile(){
         $user = auth('api')->user();
+        if ($user->avatar == 'default.jpg'){
+            $user->avatar = URL::to('/') .'/img/avatar/' . $user->avatar;
+            $user->save();
+        }
         if(isset($user)){
             return Response::json(['status'=>200,'message'=>$user],200);
         }else{

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
+use URL;
 
 
 class User extends Authenticatable implements JWTSubject
@@ -24,7 +25,8 @@ class User extends Authenticatable implements JWTSubject
         'email',
         'password',
         'email_verified_at',
-        'device_token'
+        'device_token',
+        'avatar'
     ];
 
 
