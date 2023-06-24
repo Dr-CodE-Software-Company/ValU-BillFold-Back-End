@@ -169,7 +169,7 @@ class AuthController extends Controller
          $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => ['required', Rule::unique('users')->ignore($userID)],
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         if($validator->fails()){
             return Response::json(['status'=>false,'message'=> $validator->errors()],400);
