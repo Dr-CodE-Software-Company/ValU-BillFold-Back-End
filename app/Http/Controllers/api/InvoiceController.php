@@ -21,7 +21,7 @@ use Symfony\Component\Process\Process;
 class InvoiceController extends Controller
 {
     public function create(InvoiceRequest $request){
-
+        
         if($request->image){
             $filename = '';
             $filename = uploadImage("invoice",$request->image);
@@ -154,12 +154,19 @@ class InvoiceController extends Controller
 
             );
 
-            return [
+             $data = [
                 'bankId' => trim($result[0]),
                 'price' => trim($result[1]),
                 'ocr' => trim($result[2])
             ];
-
+             if (empty($data['bankId']) || empty('ocr')){
+                     $file_path = public_path("\\img\\avatar\\" . $fileInfo['basename']);
+                     if(File::exists($file_path)) {
+                         unlink($file_path);
+                     }
+                 return Response::json(['status'=>false,'message'=> 'Sorry, re-photocopy the bill correctly'],404);
+             }
+             return $data;
         }
     }
 
