@@ -169,9 +169,9 @@ class InvoiceController extends Controller
 
 
                  $file_path = public_path("\\img\\avatar\\" . $fileInfo['basename']);
-//                 return $file_path;
+                 return $file_path;
                  if (File::exists($file_path)) {
-                     return 'fuck';
+
                      unlink($file_path);
                  }
                  return $data;
