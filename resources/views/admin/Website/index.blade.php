@@ -486,7 +486,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="copyright-box">
-                    <p class="copyright">&copy; Copyright <strong> <a href="https://bootstrapmade.com/">Dr Code</a></strong>. All Rights Reserved</p>
+                    <p class="copyright">&copy; Copyright <strong> <a href="https://doctor-code.net/">Dr Code</a></strong>. All Rights Reserved</p>
                     </div>
                 </div>
             </div>
