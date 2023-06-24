@@ -165,12 +165,15 @@ class InvoiceController extends Controller
                          unlink($file_path);
                      }
                  return Response::json(['status'=>false,'message'=> 'Sorry, re-photocopy the bill correctly'],404);
+             }else {
+
+
+                 $file_path = public_path("\\img\\avatar\\" . $fileInfo['basename']);
+                 if (File::exists($file_path)) {
+                     unlink($file_path);
+                 }
+                 return $data;
              }
-            $file_path = public_path("\\img\\avatar\\" . $fileInfo['basename']);
-            if(File::exists($file_path)) {
-                unlink($file_path);
-            }
-             return $data;
         }
     }
 
