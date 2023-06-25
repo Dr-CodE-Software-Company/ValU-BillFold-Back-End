@@ -384,7 +384,7 @@
                             <div class="pricing">
                                 <h1>${{$subscription->price}}</h1>
                                 <form method="get">
-                                    <a href="{{url('stripe',$subscription->id)}}" class="btn btn-dark px-5 py-2 primary-btn mb-5">Subscribe Now</a>
+                                    <a href="#" class="btn btn-dark px-5 py-2 primary-btn mb-5">Subscribe Now</a>
                                 </form>
                             </div>
                         </div>
