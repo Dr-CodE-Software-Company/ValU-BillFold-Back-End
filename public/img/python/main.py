@@ -19,16 +19,15 @@ def crop_image_r_m_l(img, x1: float = 0.93, x2: float = 0.99, y1: float = 0.6):
 
 
 def get_price(text):
-    if text == "":
-        return None
-    elif text[-1] == "0" and text[-2] == "0":
-        price = float(text) / 100
-        return price
+	if text == '':
+		return ''
+	elif text[-1]=='0' and text[-2]=='0':
+		price=float(text)/100
+		return price
 
-    elif text[1] == "0" and text[0] == "0":
-        price = float(text[3:])
-        return price
-
+	elif text[1]=='0' and text[0]=='0':
+		price=float(text[3:])
+	return price
 
 def get_bank_id(text):
     if "#" in text:
