@@ -57,7 +57,7 @@ class UserNotify extends Command
                 ]
                 ];
 
-                MobileNotification::craete([
+                MobileNotification::create([
                     'title' => $data['notification']['title'],
                     'body' => $data['notification']['body'],
                     'data' => json_encode($data['data'])
