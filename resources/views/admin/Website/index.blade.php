@@ -278,37 +278,38 @@
     </section><!-- End Portfolio Section -->
 
     <!-- ======= Testimonials Section ======= -->
-{{--    <div class="testimonials paralax-mf bg-image" style="background-image: url(assets/img/overlay-bg.jpg)">--}}
-{{--        <div class="overlay-mf"></div>--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-12">--}}
+    <div class="testimonials paralax-mf bg-image">
+        <div class="overlay-mf"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
 
-{{--                    <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">--}}
-{{--                        <div class="swiper-wrapper">--}}
-{{--                            @foreach($companies as $company)--}}
-{{--                            <div class="swiper-slide">--}}
-{{--                                <div class="testimonial-box">--}}
-{{--                                    <div class="author-test">--}}
-{{--                                        <img src="{{$company->image}}" alt="" width="200px" height="100px" class="rounded-circle b-shadow-a">--}}
-{{--                                        <span class="author">{{$company->name}}</span>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="content-test">--}}
-{{--                                        <p class="description lead">{{\Illuminate\Support\Str::limit($company->description,150)}}</p>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div><!-- End testimonial item -->--}}
-{{--                            @endforeach--}}
-{{--                        </div>--}}
-{{--                        <div class="swiper-pagination"></div>--}}
-{{--                    </div>--}}
+                    <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                        <div class="swiper-wrapper">
+                            @foreach($companies as $company)
+                            <div class="swiper-slide">
+                                <div class="testimonial-box">
+                                    <div class="author-test">
+                                        <img src="{{$company->image}}" alt="" width="200px" height="100px" class="rounded-circle b-shadow-a">
+                                        <span class="author">{{$company->name}}</span>
+                                    </div>
+                                    <div class="content-test">
+                                        <p class="description lead">{{\Illuminate\Support\Str::limit($company->description,150)}}</p>
+                                    </div>
+                                </div>
+                            </div><!-- End testimonial item -->
+                            @endforeach
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
 
-{{--                    <!-- <div id="testimonial-mf" class="owl-carousel owl-theme">--}}
+                    <!-- <div id="testimonial-mf" class="owl-carousel owl-theme">
 
-{{--                </div> -->--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+                </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
 {{--    </div><!-- End Testimonials Section -->--}}
 
     <!-- ======= Blog Section ======= -->
@@ -486,7 +487,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="copyright-box">
-                    <p class="copyright">&copy; Copyright <strong> <a href="https://bootstrapmade.com/">Dr Code</a></strong>. All Rights Reserved</p>
+                    <p class="copyright">&copy; Copyright <strong> <a href="https://doctor-code.net/">Dr Code</a></strong>. All Rights Reserved</p>
                     </div>
                 </div>
             </div>
